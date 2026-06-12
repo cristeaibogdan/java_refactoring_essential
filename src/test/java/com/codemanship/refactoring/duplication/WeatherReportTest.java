@@ -25,6 +25,21 @@ class WeatherReportTest {
         );
     }
 
+    @Test void formatsAfternoonForecastCorrectly() {
+        WeatherReport report = new WeatherReport();
+
+        Forecast forecast = new Forecast("afternoon", 8.0, "Rain", 20);
+
+        List<String> output = new ArrayList<>();
+        report.formatDailyReport(List.of(forecast), output);
+
+        assertEquals(1, output.size());
+        assertEquals(
+                "Afternoon: 8.0°C, Rain, wind 20km/h",
+                output.get(0)
+        );
+    }
+
     @Test
     void formatsEveningForecastCorrectly() {
         WeatherReport report = new WeatherReport();
