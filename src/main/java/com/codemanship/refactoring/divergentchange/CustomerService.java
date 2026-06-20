@@ -5,6 +5,7 @@ public class CustomerService {
 	private final EmailValidator emailValidator = new EmailValidator();
 	private final CustomerDisplayFormatter customerDisplayFormatter = new CustomerDisplayFormatter();
 	private final LoyalityService loyalityService = new LoyalityService();
+	private final AccountStatusService accountStatusService = new AccountStatusService();
 
 	public boolean isValidEmail(String email) {
 		return emailValidator.isValidEmail(email);
@@ -19,11 +20,6 @@ public class CustomerService {
 	}
 
     public String determineAccountStatus(int daysSinceLastLogin) {
-        if (daysSinceLastLogin > 365) {
-            return "INACTIVE";
-        } else if (daysSinceLastLogin > 30) {
-            return "DORMANT";
-        }
-        return "ACTIVE";
-    }
+		return accountStatusService.determineAccountStatus(daysSinceLastLogin);
+	}
 }
