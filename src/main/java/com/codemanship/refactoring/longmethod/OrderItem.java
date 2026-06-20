@@ -9,11 +9,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public double getQuantity() {
-        return quantity;
-    }
+	double calculateTotal() {
+		return this.price * this.quantity;
+	}
 }
