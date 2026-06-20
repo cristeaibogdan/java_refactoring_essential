@@ -23,20 +23,12 @@ public class Order {
         }
 
         // Subtotal calculation
-        double subtotal = 0.0;
-        for (OrderItem item : items) {
-            subtotal += item.getPrice() * item.getQuantity();
-        }
+		double subtotal = calculateSubtotal();
 
-        // Discount rules
-        double discount = 0.0;
-        if (customer.isLoyal()) {
-            discount = subtotal * 0.10;
-        } else if (subtotal > 100) {
-            discount = subtotal * 0.05;
-        }
+		// Discount rules
+		double discount = calculateDiscount(subtotal);
 
-        // Tax calculation
+		// Tax calculation
         double taxableAmount = subtotal - discount;
         double tax = taxableAmount * 0.20;
 
@@ -45,4 +37,22 @@ public class Order {
 
         return new OrderSummary(subtotal, discount, tax, total);
     }
+
+	private double calculateDiscount(double subtotal) {
+		double discount = 0.0;
+		if (customer.isLoyal()) {
+			discount = subtotal * 0.10;
+		} else if (subtotal > 100) {
+			discount = subtotal * 0.05;
+		}
+		return discount;
+	}
+
+	private double calculateSubtotal() {
+		double subtotal = 0.0;
+		for (OrderItem item : items) {
+			subtotal += item.getPrice() * item.getQuantity();
+		}
+		return subtotal;
+	}
 }
