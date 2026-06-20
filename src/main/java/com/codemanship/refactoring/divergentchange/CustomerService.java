@@ -2,12 +2,11 @@ package com.codemanship.refactoring.divergentchange;
 
 public class CustomerService {
 
-    public boolean isValidEmail(String email) {
-        if (email == null) {
-            return false;
-        }
-        return email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
-    }
+	private final EmailValidator emailValidator = new EmailValidator();
+
+	public boolean isValidEmail(String email) {
+		return emailValidator.isValidEmail(email);
+	}
 
     public String formatDisplayName(String firstName, String lastName) {
         return firstName.trim() + " " + lastName.trim().toUpperCase();
