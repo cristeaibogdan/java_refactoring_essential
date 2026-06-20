@@ -41,4 +41,9 @@ class Forecast {
     public boolean isNight() {
         return "night".equals(period);
     }
+
+	String formatForecast(String dayStage) {
+		return dayStage + getTemperature() + "°C, "
+				+ getCondition() + ", wind " + getWindSpeed() + "km/h";
+	}
 }
