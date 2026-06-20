@@ -2,11 +2,11 @@ package com.codemanship.refactoring.comments;
 
 public class X1 {
 
-    static int m(int q, int z) {
+    static int m(int lowerBound, int z) {
         int p = 0;
 
         // Iterate from lower bound (q) to upper bound (z)
-        for (int i = q; i <= z; i++) {
+        for (int i = lowerBound; i <= z; i++) {
             // Add square of each number in the range
             p += calculateSquare(i);
         }
