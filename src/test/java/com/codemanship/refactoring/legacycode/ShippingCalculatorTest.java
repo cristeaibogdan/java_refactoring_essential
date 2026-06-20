@@ -71,4 +71,23 @@ class ShippingCalculatorTest {
 		assertThat(result).isEqualTo(27.4);
 	}
 
+	@Test
+	void should_handleINTERNATIONALShipping() throws IOException, InterruptedException {
+		// GIVEN
+		Order order = new Order(
+				1004,
+				"INTERNATIONAL",
+				2,
+				50,
+				false
+		);
+		given(orderRepositoryMock.loadOrder(1004)).willReturn(order);
+
+		// WHEN
+		double result = underTest.calculateShipping(1004);
+
+		// THEN
+		assertThat(result).isEqualTo(3);
+	}
+
 }
