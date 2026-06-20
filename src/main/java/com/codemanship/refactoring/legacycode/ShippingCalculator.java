@@ -2,10 +2,17 @@ package com.codemanship.refactoring.legacycode;
 
 public class ShippingCalculator {
 
+	private OrderRepository orderRepository;
+
+	public ShippingCalculator(OrderRepository orderRepository) {
+		this.orderRepository = orderRepository;
+	}
+
 	public double calculateShipping(int orderId) {
 
         try {
-			Order order = new OrderRepository().loadOrder(orderId);
+			orderRepository = new OrderRepository();
+			Order order = orderRepository.loadOrder(orderId);
 
 			switch (order.getShippingType()) {
 

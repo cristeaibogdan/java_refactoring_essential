@@ -11,7 +11,9 @@ public class ShippingApp {
 
         int orderId = Integer.parseInt(args[0]);
 
-        ShippingCalculator calculator = new ShippingCalculator();
+        ShippingCalculator calculator = new ShippingCalculator(
+				new OrderRepository()
+		);
 
         try {
             double cost = calculator.calculateShipping(orderId);
