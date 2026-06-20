@@ -16,7 +16,7 @@ public class X1Test {
             expected += i * i;
         }
 
-        int actual = X1.m(a, b);
+        int actual = X1.sumRangeSquares(a, b);
 
         assertEquals(expected, actual);
     }
