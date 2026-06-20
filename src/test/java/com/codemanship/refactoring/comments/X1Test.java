@@ -7,7 +7,7 @@ public class X1Test {
 
     @Test
     void t1() {
-        int a = 7;
+        int a = 7; // dummy code
         int b = 12;
 
         // Expected: sum of squares from 7 to 12
