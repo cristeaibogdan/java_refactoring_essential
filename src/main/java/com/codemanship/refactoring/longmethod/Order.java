@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Order {
 
-    private final List<OrderItem> items;
+	public static final double TAX_RATE = 0.20;
+	private final List<OrderItem> items;
     private final Customer customer;
 
     public Order(List<OrderItem> items, Customer customer) {
@@ -13,21 +14,15 @@ public class Order {
     }
 
     public OrderSummary summarise() {
-
-        // Validation
 		validateItems();
 
-		// Subtotal calculation
 		double subtotal = calculateSubtotal();
 
-		// Discount rules
 		double discount = calculateDiscount(subtotal);
 
-		// Tax calculation
         double taxableAmount = subtotal - discount;
-        double tax = taxableAmount * 0.20;
+		double tax = taxableAmount * TAX_RATE;
 
-        // Total calculation
         double total = taxableAmount + tax;
 
         return new OrderSummary(subtotal, discount, tax, total);
